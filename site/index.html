@@ -1,12 +1,85 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>outcome.space</title>
-  </head>
-  <body>
-    <h1>outcome.space</h1>
-    <p>Replace this file with your final HTML before publishing.</p>
-  </body>
-  </html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Outcome Room aligns budgets, incentives and execution around critical portfolio-company outcomes.">
+  <title>Outcome Room — Align capital with execution</title>
+  <style>
+    :root{color-scheme:light;--ink:#15232a;--muted:#606e73;--line:#dce2e1;--accent:#355c55;--paper:#fafbf9}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;color:var(--ink);background:var(--paper);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1160px,calc(100% - 80px));margin:auto}
+    header{border-bottom:1px solid var(--line)}
+    nav{height:82px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:inline-flex;align-items:center;gap:11px;font-weight:650;font-size:16px;letter-spacing:-.035em}
+    .mark{height:23px;width:23px;border:1.5px solid var(--ink);position:relative}
+    .mark:after{content:"";position:absolute;width:7px;height:7px;background:var(--ink);right:-4px;top:-4px}
+    .nav-link{font-size:13px;color:#435a5a;font-weight:550}
+    .hero{padding:120px 0 112px;max-width:925px}
+    .eyebrow{font-size:11px;line-height:1.4;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700}
+    h1{font-size:clamp(46px,6.3vw,76px);line-height:1.08;letter-spacing:-.055em;font-weight:600;margin:26px 0 25px;max-width:880px}
+    .lead{max-width:680px;font-size:clamp(18px,2vw,21px);line-height:1.58;color:var(--muted);margin:0}
+    .cta{display:inline-flex;align-items:center;gap:44px;margin-top:36px;background:var(--ink);color:white;padding:17px 20px;font-size:13px;font-weight:600;transition:background .2s}
+    .cta:hover{background:var(--accent)}
+    .cta:focus-visible,.nav-link:focus-visible{outline:2px solid #427b6e;outline-offset:4px}
+    .context{border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr 1.2fr;gap:70px;padding:55px 0 60px}
+    h2{margin:0;font-size:clamp(25px,3vw,34px);letter-spacing:-.04em;line-height:1.2;font-weight:600}
+    .context p{margin:0;color:var(--muted);font-size:16px;line-height:1.75;max-width:600px}
+    .approach{padding:78px 0 86px}
+    .approach h2{margin:15px 0 37px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:42px}
+    .item{border-top:1px solid #b9c8c5;padding-top:20px}
+    .number{font-size:11px;color:#748b86;letter-spacing:.09em}
+    h3{font-size:16px;margin:22px 0 11px;letter-spacing:-.015em;font-weight:650}
+    .item p{font-size:14px;color:var(--muted);line-height:1.65;max-width:300px;margin:0}
+    .case{padding:86px 0 94px;border-top:1px solid var(--line)}
+    .case-heading{display:grid;grid-template-columns:1fr 1.1fr;gap:70px;align-items:start}
+    .case-heading h2{margin-top:15px}.case-heading p{color:var(--muted);font-size:16px;line-height:1.75;margin:0}
+    .case-box{display:grid;grid-template-columns:1fr 1fr;margin-top:42px;border:1px solid var(--line);background:#fff}
+    .case-story,.case-math{padding:35px}.case-story{border-right:1px solid var(--line)}
+    .case-story h3{font-size:19px;margin:14px 0}.case-story p{font-size:14px;line-height:1.75;color:var(--muted);margin:0}
+    .case-math{background:#f0f3f0}.case-line{display:flex;justify-content:space-between;gap:20px;padding:13px 0;border-bottom:1px solid #d9e2db;color:#51645d;font-size:13px}.case-line strong{color:var(--ink);font-size:15px;white-space:nowrap}.case-line.total{border:0;color:var(--accent);font-weight:600}.case-note{font-size:11px!important;line-height:1.65!important;color:#72817b!important;margin:15px 0 0!important}
+    .partnership{padding:84px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1.2fr;gap:70px}.partnership h2{margin-top:15px}.partnership p{font-size:15px;line-height:1.8;color:var(--muted);margin:0 0 16px}.partnership strong{color:var(--ink)}
+    .bottom{background:#e9eeeb;border-top:1px solid #d9e1dd}
+    .bottom-inner{padding:58px 0;display:flex;justify-content:space-between;gap:30px;align-items:center}
+    .bottom h2{font-size:28px;margin:0 0 10px}
+    .bottom p{color:var(--muted);font-size:14px;line-height:1.6;margin:0;max-width:600px}
+    .bottom .cta{margin:0;white-space:nowrap}
+    footer{padding:27px 0 35px;display:flex;justify-content:space-between;gap:20px;color:#7a8987;font-size:11px;line-height:1.5}
+    @media(max-width:700px){.container{width:calc(100% - 40px)}nav{height:70px}.hero{padding:76px 0 80px}h1{font-size:45px}.context{grid-template-columns:1fr;gap:20px;padding:42px 0}.grid{grid-template-columns:1fr;gap:30px}.approach{padding:60px 0}.item p{max-width:none}.case-heading,.case-box,.partnership{grid-template-columns:1fr;gap:22px}.case-story{border-right:0;border-bottom:1px solid var(--line)}.case-story,.case-math{padding:25px}.case{padding:60px 0}.partnership{padding:60px 0}.bottom-inner{align-items:flex-start;flex-direction:column}.bottom .cta{margin-top:5px}footer{flex-direction:column}}
+  </style>
+</head>
+<body>
+  <header><nav class="container" aria-label="Main navigation"><a class="brand" href="#top"><span class="mark" aria-hidden="true"></span>Outcome Room</a><a class="nav-link" href="#approach">Our approach ↓</a></nav></header>
+  <main id="top">
+    <section class="container hero">
+      <div class="eyebrow">For private equity and portfolio companies</div>
+      <h1>Align capital with execution.</h1>
+      <p class="lead">Outcome Room is a proposed budget execution layer for aligning incentives, resources and people around critical outcomes in portfolio-company finance.</p>
+      <a class="cta" href="#approach">Explore the approach <span aria-hidden="true">↘</span></a>
+    </section>
+    <section class="container context" aria-labelledby="context-title">
+      <h2 id="context-title">The cost of delay is real.<br>So is the opportunity to act.</h2>
+      <p>When a critical deliverable falls behind, external costs rise and internal teams face competing demands. We are developing an operator-led approach to connect the budget for a priority with the people and work required to deliver it.</p>
+    </section>
+    <section class="container approach" id="approach" aria-labelledby="approach-title">
+      <div class="eyebrow">The approach</div><h2 id="approach-title">From priority to shared outcome.</h2>
+      <div class="grid">
+        <div class="item"><div class="number">01 / DEFINE</div><h3>Set the outcome</h3><p>Clarify the deliverable, the economics at stake and the criteria for success.</p></div>
+        <div class="item"><div class="number">02 / ALIGN</div><h3>Connect budget and work</h3><p>Structure the work, capacity and proposed incentives around a common objective.</p></div>
+        <div class="item"><div class="number">03 / EXECUTE</div><h3>Coordinate delivery</h3><p>Bring sponsors, operators and teams together to agree on a practical path forward.</p></div>
+      </div>
+    </section>
+    <section class="container case" id="example" aria-labelledby="case-title">
+      <div class="case-heading"><div><div class="eyebrow">An illustrative mandate</div><h2 id="case-title">An overdue audit.<br>A different allocation.</h2></div><p>A portfolio company faces an overdue audit package and further external support costs. A defined delivery mandate could connect an incentive pool to the internal work needed to bring the package to review readiness.</p></div>
+      <div class="case-box"><div class="case-story"><div class="eyebrow">The proposed outcome</div><h3>A review-ready evidence package.</h3><p>Reconcile outstanding balances, assemble supporting evidence and prepare a handover for the auditor. The sponsor, operator and finance team agree on scope, capacity, incentives and acceptance criteria.</p></div><div class="case-math"><div class="eyebrow">Illustrative economics</div><div class="case-line"><span>Avoidable external cost</span><strong>€120,000</strong></div><div class="case-line"><span>Proposed team incentive pool</span><strong>− €70,000</strong></div><div class="case-line"><span>Other incremental costs</span><strong>− €10,000</strong></div><div class="case-line total"><span>Potential net cost difference</span><strong>€40,000</strong></div><p class="case-note">Illustrative only, not verified savings. Actual results depend on genuinely avoidable costs, remaining fees, employer costs, timing and delivery.</p></div></div>
+    </section>
+    <section class="container partnership" aria-labelledby="partner-title"><div><div class="eyebrow">The partnership</div><h2 id="partner-title">A shared mandate.<br>Clear ownership.</h2></div><div><p><strong>The sponsor</strong> defines the priority and available budget. <strong>The operator</strong> structures the outcome and coordinates delivery. <strong>The team</strong> brings the expertise and discusses the proposed work and incentives.</p><p>The planned software would make the economics, work packages and proposed terms visible in one place. An AI agent could help structure information and surface dependencies; human participants and authorized approvers remain responsible for decisions. This is a concept in development.</p></div></section>
+    <section class="bottom"><div class="container bottom-inner"><div><h2>Start with one critical outcome.</h2><p>Audit readiness, overdue reporting or another high-priority finance deliverable. Define the mandate, test the economics and build the approach around the people doing the work.</p></div><a class="cta" href="#top">Back to the top <span aria-hidden="true">↑</span></a></div></section>
+  </main>
+  <footer class="container"><span>© Outcome Room</span><span>Incentive alignment. Outcome alignment. Execution.</span></footer>
+</body>
+</html>
