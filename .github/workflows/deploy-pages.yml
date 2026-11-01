@@ -24,20 +24,40 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Check Pages site availability
+        id: pages_site
+        uses: actions/github-script@v7
+        with:
+          script: |
+            try {
+              await github.rest.repos.getPages({
+                owner: context.repo.owner,
+                repo: context.repo.repo
+              });
+              core.setOutput('enabled', 'true');
+            } catch (error) {
+              if (error.status === 404) {
+                core.warning('GitHub Pages is not enabled for this repository. Skipping deployment.');
+                core.setOutput('enabled', 'false');
+                return;
+              }
+              throw error;
+            }
+
       - name: Configure Pages
+        if: steps.pages_site.outputs.enabled == 'true'
         id: pages
         uses: actions/configure-pages@v5
-        continue-on-error: true
         with:
           enablement: false
 
       - name: Upload Pages artifact
-        if: steps.pages.outcome == 'success'
+        if: steps.pages_site.outputs.enabled == 'true' && steps.pages.outcome == 'success'
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./site
 
       - name: Deploy to GitHub Pages
-        if: steps.pages.outcome == 'success'
+        if: steps.pages_site.outputs.enabled == 'true' && steps.pages.outcome == 'success'
         id: deployment
         uses: actions/deploy-pages@v4
